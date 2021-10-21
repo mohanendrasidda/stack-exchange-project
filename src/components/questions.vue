@@ -7,7 +7,7 @@
       </form>
       <div
         class="list-group"
-        v-for="item in allanswers.items"
+        v-for="item in questionsdata.items"
         :key="item.question_id"
        >
         <div>{{item.question_id}}</div>
@@ -43,7 +43,7 @@ export default {
   name: "questions",
   data() {
     return {
-      allanswers: {
+      questionsdata: {
         items: [],
       },
       order: "",
@@ -53,7 +53,7 @@ export default {
   async created() {
     try {
       const data = await getquestions(this.order, this.sort);
-      this.allanswers = data;
+      this.questionsdata = data;
     } catch (error) {
       console.log(error);
     }
