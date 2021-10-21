@@ -2,7 +2,7 @@
 import Router from 'vue-router';
 
 // Import each page component
-import answers from '@/components/answers.vue';
+import questions from '@/components/questions.vue';
 
 
 const router = new Router({
@@ -11,7 +11,7 @@ const router = new Router({
     {
       name: 'answers',
       path: '/',
-      component: answers,
+      component: questions,
     },
    
   ],

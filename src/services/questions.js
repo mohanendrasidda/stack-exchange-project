@@ -21,9 +21,9 @@ import axios from "axios"
 
 //--------------------------------------------------------------------------------------------------//
 
-const getanswers = async (order,sort,id) => {
+const getquestions = async (order,sort) => {
     try{
-        const response = await axios.get(`https://api.stackexchange.com/2.2/questions/${id}/answers`,
+        const response = await axios.get(' https://api.stackexchange.com/2.2/questions/',
         {
             params:{
                 order: order,
@@ -40,6 +40,6 @@ const getanswers = async (order,sort,id) => {
 
 
 export {
-    getanswers
+    getquestions
     
 }
