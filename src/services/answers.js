@@ -15,15 +15,21 @@ import axios from "axios"
 //https://api.stackexchange.com/2.2/questions/55177928/answers?order=desc&sort=activity&site=stackoverflow&filter=withbody
 */
 
+// ------------------------------------------------------------------------------------------------//
+
+/* https://api.stackexchange.com/2.2/questions/?order=desc&sort=activity&site=stackoverflow&filter=withbody */
+
+//--------------------------------------------------------------------------------------------------//
+
 const getanswers = async (order,sort) => {
     try{
-        const response = await axios.get(' https://api.stackexchange.com/2.2/questions/6827752/answers',
+        const response = await axios.get(' https://api.stackexchange.com/2.2/questions/',
         {
             params:{
                 order: order,
                 sort: sort,
                 site:'stackoverflow',
-                filter: 'true' 
+                filter: 'withbody' 
             }
         });
             return response.data;

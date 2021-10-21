@@ -8,7 +8,7 @@
        
                  
                  
-                 <a href="item.link">{{item.title}}</a>
+                 <div v-html="item.body"></div>
 
 
         </div>
