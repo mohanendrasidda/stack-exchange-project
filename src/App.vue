@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<AppNavbar/>
+ <div class="container my-3">
+            <!-- placeholder for ROuter to show the matching component -->
+            <router-view></router-view>
+        </div>
+
+   
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppNavbar from './components/Navbar'
+//import Home from '@/components/Home.vue'
+//import workshopslist from '@/components/workshopslist.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name:'app',
+  components:{
+    AppNavbar,
+    //AppHome:Home,
+    //WorkshopsList:workshopslist
   }
+  
+  
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
