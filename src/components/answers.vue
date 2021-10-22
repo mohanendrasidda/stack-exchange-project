@@ -1,7 +1,8 @@
 <template>
    <div>
-       <div v-for="i in answersdata" :key="i.answer_key">
-           <p>{{i.body}}</p>        
+       <div v-for="i in answersdata.items" :key="i.answer_key">
+          <div v-html="i.body"></div>   
+          ----------------------------------------    
     </div>
    </div>
 </template>
@@ -12,7 +13,7 @@ export default{
     name: 'answers',
     props:{
         id:{
-            type: Number,
+            type:  [Number, String]
         }
     },
     data(){

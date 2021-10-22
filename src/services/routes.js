@@ -17,7 +17,7 @@ const router = new Router({
     {
         name: 'answers',
         path: '/questions/:id',
-        props: true,
+        props: true, 
         component: answers
     }
    
