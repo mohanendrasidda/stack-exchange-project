@@ -16,7 +16,7 @@
             class="
               list-group-item
               d-flex
-              justify-content-between
+              justify-content-betwe
               align-items-start
               my-3
               bg-color
@@ -59,26 +59,32 @@
                                 <div class="col-md-6 col-lg-3 my-3">
                                     <div class="input-group position-relative">
                                         <input type="text" class="form-control" placeholder="Enter Your Keywords" id="keywords"
-                                        v-model="tagged" @change="searchingoption">
+                                        v-model="q" @change="searchingoption">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-3 my-3">
                                     <div class="select-container">
-                                        <select class="custom-select">
-                                            <option selected="">Location</option>
-                                            <option value="1">Jaipur</option>
-                                            <option value="2">Pune</option>
-                                            <option value="3">Bangalore</option>
+                                        <select class="custom-select"
+                                        v-model="sort"
+                                        @change="searchingoption">
+                                            <option selected="">sort By</option>
+                                            <option value="1">activity</option>
+                                            <option value="2">votes</option>
+                                            <option value="3">creation</option>
+                                            <option value="3">hot</option>
+                                            <option value="3">week</option>
+                                            <option value="3">month</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-3 my-3">
                                     <div class="select-container">
-                                        <select class="custom-select">
-                                            <option selected="">Select Job Type</option>
-                                            <option value="1">Ui designer</option>
-                                            <option value="2">JS developer</option>
-                                            <option value="3">Web developer</option>
+                                        <select class="custom-select"
+                                        v-model="order"
+                                        @change="searchingoption">
+                                            <option selected="">order</option>
+                                            <option value="1">asc</option>
+                                            <option value="2">desc</option>
                                         </select>
                                     </div>
                                 </div>
@@ -93,19 +99,25 @@
                         <div class="filter-result">
                             <p class="mb-30 ff-montserrat">Total Job Openings : 89</p>
                                           <!-- questions start here -->
-                            <router-link class="job-box d-md-flex align-items-center justify-content-between mb-30 text-reset 
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30 text-reset 
                                       text-decoration-none"
                                       v-for="item in questionsdata.items"
                                       :key="item.question_id"
-                                      :to="`/questions/${item.question_id}`"
                                       >
                                 <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
                                     <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                                        FD
+                                       {{item.answer_count}}
                                     </div>
                                     <div class="job-content">
-                                        <h5 class="text-center text-md-left">{{ item.title }}</h5>
-                                        <p  v-html="item.body"></p>
+
+                                      <!-- questions router link starts here -->
+
+                                        <router-link class="text-center text-md-left text-decoration-none text-reset"
+                                        :to="`/questions/${item.question_id}`">
+                                        <h3>{{ item.title }}</h3>
+                                        </router-link>
+
+                                        <p class="text-center text-md-left" v-html="item.body"></p>
                                         <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
                                             <li class="mr-md-4">
                                                 <i class="zmdi zmdi-pin mr-2"></i> Los Angeles
@@ -119,10 +131,10 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="job-right my-4 flex-shrink-0">
+                                <!-- <div class="job-right my-4 flex-shrink-0">
                                     <a href="#" class="btn d-block w-100 d-sm-inline-block btn-light">Apply now</a>
-                                </div>
-                            </router-link>
+                                </div> -->
+                            </div>
 
 
                       
@@ -171,13 +183,13 @@ export default {
       },
       order: "",
       sort: "",
-      tagged: "",
+      q: "",
     };
   },
   methods: {
     async searchingoption() {
       try {
-        const data = await getquestions(this.order, this.sort, this.tagged);
+        const data = await getquestions(this.order, this.sort, this.q);
         this.questionsdata = data;
       } catch (error) {
         console.log(error);

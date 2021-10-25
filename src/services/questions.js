@@ -20,20 +20,24 @@ import axios from "axios"
 /* https://api.stackexchange.com/2.2/questions/?order=desc&sort=activity&site=stackoverflow&filter=withbody */
 
 //--------------------------------------------------------------------------------------------------//
+// https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&site=stackoverflow
 
-const getquestions = async (order,sort,tagged) => {
+
+
+const getquestions = async (order,sort,q) => {
     try{
-        const response = await axios.get(' https://api.stackexchange.com/2.2/questions/',
+        const response = await axios.get('https://api.stackexchange.com/2.3/search/advanced',
         {
             params:{
                 order: order,
                 sort: sort,
                 site:'stackoverflow',
                 filter: 'withbody',
-                pazesize: '1',
-                tagged: tagged
+                pagesize: '8',
+                q: q
             }
         });
+        console.log('checking')
             return response.data;
     } catch(error){
         console.log(error)
