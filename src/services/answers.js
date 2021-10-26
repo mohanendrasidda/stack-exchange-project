@@ -21,7 +21,7 @@ import axios from "axios"
 
 //--------------------------------------------------------------------------------------------------//
 
-const getanswers = async (order,sort,id) => {
+const getanswers = async (order,sort,id,) => {
     try{
         const response = await axios.get(`https://api.stackexchange.com/2.2/questions/${id}/answers`,
         {
@@ -29,7 +29,8 @@ const getanswers = async (order,sort,id) => {
                 order: order,
                 sort: sort,
                 site:'stackoverflow',
-                filter: 'withbody' 
+                filter: 'withbody',
+                
             }
         });
             return response.data;

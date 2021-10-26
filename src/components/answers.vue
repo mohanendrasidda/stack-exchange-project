@@ -14,6 +14,9 @@ export default{
     props:{
         id:{
             type:  [Number, String]
+        },
+        title:{
+            type: String
         }
     },
     data(){
@@ -27,7 +30,7 @@ export default{
     },
         async created(){
             try{
-                const data= await getanswers(this.order, this.sort, this.id)
+                const data= await getanswers(this.order, this.sort, this.id,this.title)
                     this.answersdata= data;         
             }catch(error){
                 console.log(error)
