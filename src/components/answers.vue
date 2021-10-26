@@ -1,7 +1,10 @@
 <template>
    <div>
-       <div v-for="i in answersdata.items" :key="i.answer_key">
-          <div v-html="i.body"></div>   
+       <div v-for="(i,index) in answersdata.items" :key="i.answer_id">
+         
+          <div v-html="i.body"></div> 
+           
+          <button :data-id="index" @click="storeanswers">Add to cart</button> 
           ----------------------------------------    
     </div>
    </div>
@@ -9,6 +12,7 @@
 
 <script>
 import {getanswers} from '@/services/answers'
+import postanswers from '@/services/cart.js'
 export default{
     name: 'answers',
     props:{
@@ -24,6 +28,9 @@ export default{
             answersdata: {
 
             },
+            // saveddata:{
+
+            // },
             order: "",
             sort: ""
         }
@@ -35,7 +42,25 @@ export default{
             }catch(error){
                 console.log(error)
               }
+        },
+    methods:{
+        async storeanswers(event){
+            console.log(event.target.dataset.id)
+            console.log(this.answersdata.items[event.target.dataset.id])
+            try{
+                const saveddata= this.answersdata.items[event.target.dataset.id]
+                const data= await postanswers.postanswers(saveddata)
+                console.log(data)
+                this.$router.push({
+                    name: 'cart'
+                });
+            }catch(error){
+                console.log('adding data error')
+            }
+            
         }
+
+    }
 }
 
 </script>

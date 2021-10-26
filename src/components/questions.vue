@@ -44,8 +44,9 @@
                  <div class="col-lg-10 mx-auto mb-4">
                     <div class="section-title text-center ">
                         <h3 class="top-c-sep">Ask Me</h3>
-                        <p>Lorem ipsum dolor sit detudzdae amet, rcquisc adipiscing elit. Aenean socada commodo
-                            ligaui egets dolor. Nullam quis ante tiam sit ame orci eget erovtiu faucid.</p>
+                        <p>Ask me is a question and answer website for professional and enthusiast programmers. 
+                          It is the flagship site of the Stack Exchange Network, created in 2008 by Jeff Atwood and Joel Spolsky.
+                           It features questions and answers on a wide range of topics in computer programming.</p>
                     </div>
                 </div>
             </div>
@@ -97,14 +98,14 @@
                         </form>
 
                         <div class="filter-result">
-                            <p class="mb-30 ff-montserrat">Total Job Openings : 89</p>
+                            <p class="mb-30 ff-montserrat"></p>
                                           <!-- questions start here -->
                             <div class="job-box d-md-flex align-items-center justify-content-between mb-30 text-reset 
                                       text-decoration-none"
                                       v-for="item in questionsdata.items"
                                       :key="item.question_id"
                                       >
-                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                <div class="job-left my-4  align-items-center flex-wrap">
                                     <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
                                        {{item.answer_count}}
                                     </div>

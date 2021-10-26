@@ -2,7 +2,8 @@
 
 <div>
     <div v-for="i in finalsavedanswers" :key="i._id">
-        {{body}}
+        <div v-html="i.body"></div>
+        --------------------------------------------------
     </div>
     
 </div>
@@ -20,9 +21,10 @@ export default{
             }
         }
     },
-   async created(){
+   async mounted(){
+       console.log(savedanswers)
        try{
-         const data= await savedanswers()
+         const data= await savedanswers.savedanswers()
          this.finalsavedanswers= data;
        }catch(error){
            console.log('unable to get data')
