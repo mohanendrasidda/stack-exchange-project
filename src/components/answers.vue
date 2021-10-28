@@ -47,6 +47,7 @@ export default{
         async storeanswers(event){
             console.log(event.target.dataset.id)
             console.log(this.answersdata.items[event.target.dataset.id])
+            alert('your answer has been saved to cart')
             try{
                 const saveddata= this.answersdata.items[event.target.dataset.id]
                 const data= await postanswers.postanswers(saveddata)

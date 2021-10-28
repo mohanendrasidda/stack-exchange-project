@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="container px-2">
+    <div class="container 
+    ">
       <ul class="nav navbar-nav">
         <li class="nav-item active">
           <router-link class="nav-link" to="/">Home</router-link>
@@ -22,4 +23,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
