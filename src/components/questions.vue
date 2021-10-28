@@ -43,7 +43,7 @@
       crossorigin="anonymous"
     />
 
-    <div class="container">
+    <div class="container body">
       <div class="row">
         <div class="col-lg-10 mx-auto mb-4">
           <div class="section-title text-center">
@@ -87,7 +87,7 @@
                       v-model="sort"
                       @change="searchingoption"
                     >
-                      <option value="">sort By</option>
+                      <option disable selected value="">sort By</option>
                       <option value="1">activity</option>
                       <option value="2">votes</option>
                       <option value="3">creation</option>
@@ -104,7 +104,7 @@
                       v-model="order"
                       @change="searchingoption"
                     >
-                      <option selected="">order</option>
+                      <option disable selected value="">Order By</option>                 
                       <option value="1">asc</option>
                       <option value="2">desc</option>
                     </select>
@@ -142,8 +142,8 @@
                     
                     </router-link>
 
-                    <div class="cart-answers"> 
-                      <div v-html="item.body"></div> 
+                    <div class="cart-answers flex-fill "> 
+                      <div v-html="item.body" class="ans"></div> 
                       <div class="answercount" title="No.of answers">Ans: {{item.answer_count}}</div>
                     </div>
                     <hr />
@@ -190,8 +190,14 @@ export default {
 
 <style scoped>
 
+.body{
+  background-color: rgb(32, 105, 150);
+  width: 100%;
+}
+
 .question{
-  color: black;
+  color: rgb(143, 16, 16);
+  overflow: auto;
 }
 .question:hover{
   color: navy;
@@ -200,11 +206,13 @@ export default {
     display: flex;
     background-color:rgb(240, 192, 90);
     flex-wrap: wrap;
-    padding: 2em;
+    padding: 4em 0 0 2em;
     margin-bottom: 1em;
     border-radius: 1em;
     color: rgb(255, 255, 255); 
     position: relative;
+    overflow: auto; 
+   
 }
 .answercount{
   position: absolute;
@@ -216,6 +224,7 @@ export default {
   background-color: rgb(216, 22, 22);
   
 }
+
 .continer {
   max-width: 1080px;
 }
