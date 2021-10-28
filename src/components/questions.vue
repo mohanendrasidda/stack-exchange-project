@@ -224,7 +224,12 @@ export default {
   background-color: rgb(216, 22, 22);
   
 }
-
+@media screen and (max-width: 300px) {
+        .cart-answers {
+            display: block;
+            float: none;
+        }
+}
 .continer {
   max-width: 1080px;
 }
