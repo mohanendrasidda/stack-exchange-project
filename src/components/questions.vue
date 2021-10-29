@@ -142,7 +142,7 @@
                     
                     </router-link>
 
-                    <div class="cart-answers flex-fill "> 
+                    <div class="cart-answers "> 
                       <div v-html="item.body" class="ans"></div> 
                       <div class="answercount" title="No.of answers">Ans: {{item.answer_count}}</div>
                     </div>
@@ -191,7 +191,7 @@ export default {
 <style scoped>
 
 .body{
-  background-color: rgb(32, 105, 150);
+  background-color: rgb(136,171,227);
   width: 100%;
 }
 
@@ -204,12 +204,15 @@ export default {
 }
 .cart-answers{
     display: flex;
-    background-color:rgb(240, 192, 90);
+   /* background-color:rgb(240, 192, 90);*/
+   background-color:white;
+
     flex-wrap: wrap;
     padding: 4em 0 0 2em;
     margin-bottom: 1em;
     border-radius: 1em;
-    color: rgb(255, 255, 255); 
+    /*color: rgb(255, 255, 255); */
+    color: rgb(46, 46, 4);
     position: relative;
     overflow: auto; 
    

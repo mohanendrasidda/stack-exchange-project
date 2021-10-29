@@ -34,7 +34,22 @@ const postanswers= async (saveddata)=>{
     }
 }
 
+const deleteanswer= async(removedataid)=>{
+    try{
+        await axios.delete(`http://localhost:3000/savedanswers/${removedataid}`
+        ,{
+            params:{
+                removedataid:removedataid
+            }
+        }
+        )
+
+    }catch(error){
+        console.log('failed to pass id')
+    }
+}
 export default{
     savedanswers,
-    postanswers
+    postanswers,
+    deleteanswer
 }
