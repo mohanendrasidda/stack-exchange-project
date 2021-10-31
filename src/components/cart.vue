@@ -7,7 +7,7 @@
      :key="i._id">
         <div v-html="i.body"
         class="cart-answers"></div>
-      <button :data-id="index" @click="removeanswer">Remove</button>
+      <button :data-id="index" @click="removeanswer($event)">Remove</button>
       <hr>
         
     </div>
@@ -32,11 +32,16 @@ export default{
     methods:{
        async removeanswer(event){
         //   console.log(this.finalsavedanswers[event.target.dataset.id])
+        console.log('remove once called')
            try{
+            
                const removedata= this.finalsavedanswers[event.target.dataset.id]
                const removedataid= removedata._id
-            //    console.log(removedataid)
-               const data= await deleteanswer(removedataid)
+               console.log(removedataid)
+               alert(`your answer is removed refresh to see the result`)
+               const data= await deleteanswer.deleteanswer(removedataid)
+               //savedanswers.savedanswers()
+              // console.log(this.finalsavedanswers)
                console.log(data)
            }catch(error){
                console.log('not received data')

@@ -20,11 +20,12 @@ import axios from "axios"
 /* https://api.stackexchange.com/2.2/questions/?order=desc&sort=activity&site=stackoverflow&filter=withbody */
 
 //--------------------------------------------------------------------------------------------------//
-// https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&site=stackoverflow
+// https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&site=stackoverflow&filter=withbody
 
 
 
 const getquestions = async (order,sort,q) => {
+    console.log(getquestions)
     try{
         const response = await axios.get('https://api.stackexchange.com/2.3/search/advanced',
         {
@@ -37,7 +38,8 @@ const getquestions = async (order,sort,q) => {
                 q: q
             }
         });
-        console.log('checking')
+        console.log('questions response')
+        console.log(response.data)
             return response.data;
     } catch(error){
         console.log(error)

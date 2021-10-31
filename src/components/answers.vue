@@ -19,7 +19,7 @@
 import {getanswers} from '@/services/answers'
 import postanswers from '@/services/cart.js'
 export default{
-    name: 'answers',
+    name: 'Answers',
     props:{
         id:{
             type:  [Number, String]
@@ -57,9 +57,9 @@ export default{
                 const saveddata= this.answersdata.items[event.target.dataset.id]
                 const data= await postanswers.postanswers(saveddata)
                 console.log(data)
-                this.$router.push({
-                    name: 'cart'
-                });
+                // this.$router.push({
+                //     name: 'cart'
+                // });
             }catch(error){
                 console.log('adding data error')
             }

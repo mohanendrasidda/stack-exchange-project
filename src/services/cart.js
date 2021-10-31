@@ -35,14 +35,16 @@ const postanswers= async (saveddata)=>{
 }
 
 const deleteanswer= async(removedataid)=>{
+    console.log('delete anwer called')
+    console.log(removedataid)
+    console.log(`http://localhost:3000/61782e482579e231e8c3be78`)
     try{
-        await axios.delete(`http://localhost:3000/savedanswers/${removedataid}`
-        ,{
-            params:{
-                removedataid:removedataid
-            }
-        }
-        )
+       // await axios.delete('http://localhost:3000/',removedataid)
+       console.log('before 43')
+      const response=  await axios.delete(`http://localhost:3000/${removedataid}`)
+      console.log(response)
+        return response;
+        
 
     }catch(error){
         console.log('failed to pass id')

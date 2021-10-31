@@ -36,6 +36,11 @@
         </ol>
       </router-link>
     </div> -->
+    <!-- props to answers -->
+    <!-- <Answers
+    v-for="item in questionsdata.items"
+    :key="item.question_id"
+    :title="item.title"/> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
@@ -160,8 +165,12 @@
 
 <script>
 import { getquestions } from "@/services/questions";
+// import Answers from './answers.vue';
 export default {
   name: "questions",
+  components:{
+    // Answers
+  },
   data() {
     return {
       questionsdata: {
