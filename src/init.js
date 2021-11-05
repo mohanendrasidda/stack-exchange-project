@@ -2,6 +2,8 @@ import Vue from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Router from 'vue-router'
+
+import Vuex from 'vuex'
 // import dateFilter from '@/filters/date'
 
 // import Appspinner from '@/components/utils/AppSpinner'
@@ -12,3 +14,4 @@ Vue.use(Router)
 // Vue.component('AppSpinner',Appspinner)
 // Vue.component('AppAlert',AppAlert)
 
+Vue.use(Vuex)

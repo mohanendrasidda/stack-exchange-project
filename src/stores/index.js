@@ -1,11 +1,10 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
-import getquestions from './modules/getquestions.js'
+import Vuex from 'vuex';
+import auth from './modules/auth';
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-    modules:{
-        getquestions
+const store = new Vuex.Store({
+    modules: {
+        auth: auth
     }
-})
+});
+
+export default store;

@@ -3,7 +3,9 @@
     <div >
       <h2>Login Form</h2>
       <!--Step 1 : Adding HTML-->
-      <form action="" :style="{'background-color':'white'}" @submit.prevent="login">
+      <!--  :style="{'background-color':'black'}" -->
+      
+      <form action="">
         <div class="imgcontainer">
           <img src="@/assets/logo.png" alt="Avatar" class="avatar" />
         </div>
@@ -11,11 +13,17 @@
         <div class="container">
           <label><b>Username</b></label>
           <input
-            type="email"
-            placeholder="Enter Username/email"
+            type="text"
+            placeholder="Enter Username"
             name="uname"
             required
-            v-model="loginform.email"
+          />
+           <label><b>Email</b></label>
+          <input
+            type="email"
+            placeholder="Enter Email"
+            name="email"
+            required
           />
 
           <label><b>Password</b></label>
@@ -24,43 +32,24 @@
             placeholder="Enter Password"
             name="psw"
             required
-            v-model="loginform.password"
           />
-
-           <button class="btn btn-primary" type="submit">Login</button>
+          
+           <router-link to="/login"  tag="button"> signup</router-link> 
           <input type="checkbox" checked="checked" /> Remember me
         </div>
 
         <div class="container" style="background-color: #f1f1f1">
-          <router-link class="cancelbtn" to="/register" tag="button">signup</router-link>
-          <span class="psw">Forgot <a href="#">password?</a></span>
+   
         </div>
       </form>
+  
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "login",
-  data(){
-    return{
-      loginform:{
-        email: '',
-        password: ''
-      }
-    }
-  },
-
-     methods: {
-            login() {
-                this.$store.dispatch( 'login', this.loginform )
-                    .then( () => this.$router.push( { name: 'questions' } ) )
-                    .catch( error => {
-                        alert( error.message );
-                    });
-            }
-        }
+  name: "signup",
 };
 </script>
 
@@ -74,8 +63,9 @@ form {
 }
 /*assign full width inputs*/
 
-input[type="email"],
-input[type="password"] {
+input[type="text"],
+input[type="password"],
+input[type= email] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

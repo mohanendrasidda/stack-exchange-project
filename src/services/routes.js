@@ -6,10 +6,16 @@ import questions from '@/components/questions.vue';
 import answers from '@/components/answers.vue'
 import cart from '@/components/cart.vue'
 import login from '@/components/Login.vue'
+import signup from '@/components/signup.vue'
 
 const router = new Router({
   mode: 'history',
   routes: [
+    {
+      name:'signup',
+      path:'/register',
+      component: signup
+    },
     {
       name: 'login',
       path: '/login',
@@ -31,7 +37,8 @@ const router = new Router({
       path: '/cart',
       props: true, 
       component: cart
-  }
+   },
+  
    
   ],
 });
