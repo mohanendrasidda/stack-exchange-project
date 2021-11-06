@@ -38,13 +38,13 @@ const auth= {
             return login( credentials )
                         .then( data => {
                             // in meeting app the token may be in token, not authToken
-                            const { authToken, email, role } = data
+                            const { token, email, role } = data
         
-                            localStorage.setItem( KEY_TOKEN, authToken );
+                            localStorage.setItem( KEY_TOKEN, token );
                             localStorage.setItem( KEY_EMAIL, email );
                             localStorage.setItem( KEY_ROLE, role );
         
-                            commit( 'setToken', authToken );
+                            commit( 'setToken', token );
                             commit( 'setEmail', email );
                             commit( 'setRole', role );
         

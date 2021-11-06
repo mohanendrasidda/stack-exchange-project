@@ -190,7 +190,12 @@ export default {
         console.log(error);
       }
     },
+    
+     
   },
+  // computed:{
+  //   this.$store.commit('setquestions')
+  // },
   created() {
     this.searchingoption();
   },
