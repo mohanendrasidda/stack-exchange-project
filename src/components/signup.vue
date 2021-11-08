@@ -1,7 +1,7 @@
 <template>
   <div>
     <div >
-      <h2>Login Form</h2>
+      <h2>Sign Form</h2>
       <!--Step 1 : Adding HTML-->
       <!--  :style="{'background-color':'black'}" -->
       
@@ -17,6 +17,7 @@
             placeholder="Enter Username"
             name="uname"
             required
+            v-model="usercredentials.name"
           />
            <label><b>Email</b></label>
           <input
@@ -24,6 +25,7 @@
             placeholder="Enter Email"
             name="email"
             required
+            v-model="usercredentials.email"
           />
 
           <label><b>Password</b></label>
@@ -32,10 +34,10 @@
             placeholder="Enter Password"
             name="psw"
             required
-          />
-          
-           <router-link to="/login"  tag="button"> signup</router-link> 
-          <input type="checkbox" checked="checked" /> Remember me
+            v-model="usercredentials.password"
+          /> 
+            <button @click="storeanswers" type="submit">signup</button>
+           <router-link to="/login"  tag="button"> login</router-link> 
         </div>
 
         <div class="container" style="background-color: #f1f1f1">
@@ -48,8 +50,35 @@
 </template>
 
 <script>
+import signupcredentials from '@/services/auth.js'
 export default {
   name: "signup",
+  data(){
+    return{
+      usercredentials: {
+        name: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
+ 
+  methods: {
+    async storeanswers() {
+      alert("you are successfully registered");
+      try {
+        const credentialstosend= this.usercredentials
+        console.log(credentialstosend)
+        const data = await signupcredentials.signupcredentials(credentialstosend);
+        console.log(data);
+        // this.$router.push({
+        //     name: 'login'
+        // });
+      } catch (error) {
+        console.log("adding data error");
+      }
+    },
+  },
 };
 </script>
 
@@ -130,3 +159,7 @@ span.psw {
   }
 }
 </style>
+
+Zames
+Zamea123@gmail.com
+Zames@123#

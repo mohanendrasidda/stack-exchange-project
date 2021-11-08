@@ -45,7 +45,7 @@ export default {
   name: "login",
   data(){
     return{
-      loginform:{
+      loginform: {
         email: '',
         password: ''
       }
