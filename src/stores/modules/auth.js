@@ -6,9 +6,9 @@ const KEY_ROLE = 'role';
 
 const auth= {
     state:{
-      token: /*localStorage.getItem(KEY_TOKEN) ||*/'',
-      email: /*localStorage.getItem(KEY_EMAIL) ||*/ '',
-      role:  /*localStorage.getItem(KEY_ROLE) || */''
+      token: localStorage.getItem(KEY_TOKEN) ||'',
+      email: localStorage.getItem(KEY_EMAIL) || '',
+      role:  localStorage.getItem(KEY_ROLE) || ''
     },
 
     getters:{
@@ -34,11 +34,12 @@ const auth= {
 
     actions:{
         login( { commit }, credentials ) {
-            console.log(credentials)
+            
             return login( credentials )
                         .then( data => {
                             // in meeting app the token may be in token, not authToken
-                            const { token, email, role } = data
+                            const { token, email, role } = data.data
+                            console.log('after:',data)
         
                             localStorage.setItem( KEY_TOKEN, token );
                             localStorage.setItem( KEY_EMAIL, email );
@@ -51,8 +52,22 @@ const auth= {
                             return email;
                         });
         },
+        logout( { commit } ) {
+            localStorage.removeItem( KEY_TOKEN );
+            localStorage.removeItem( KEY_EMAIL );
+            localStorage.removeItem( KEY_ROLE );
+        
+            commit( 'setToken', '' );
+            commit( 'setEmail', '' );
+            commit( 'setRole', '' );
+
+            return Promise.resolve();
+        }
     }
 
 }
+
+//  "email": "d@gmail.com",
+// "password": "Bbacdef2#"
 
 export default auth

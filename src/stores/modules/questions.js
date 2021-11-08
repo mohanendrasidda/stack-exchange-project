@@ -1,36 +1,68 @@
 import { getquestions } from "@/services/questions";
+console.log('modulegetquestions',getquestions)
 
 const questiondata= {
     state: {
-        questionsobject: {
-
+        questionsobject: []
+    },
+    getters:{
+        getitems: state =>{
+            return state.questionsobject.forEach(item=>item.title)
         }
     },
 
     mutations:{
-        setquestions(state, payload){
-            console.log(payload)
-            state.questionsobject= payload.items
+        setquestions(state, items){
+            console.log(items)
+            state.questionsobject= items
         }
     },
 
     actions: {
-        questionsAsync: async ({commit})=>{
-            try{
-                return await getquestions((data)=>{
-                    //console.log(data)
-                    console.log('Respose:', data)
-                    commit('setquestions',data)
-                    console.log('hi')
-                })
-               // const {title}= data
-               //console.log('data')
-               // console.log(title)
-               // commit('setquestions',data)
-            }catch(error){
-                console.log('couldnt fetch questions data in store')
-            }
-        }
+        // questionsAsync: async ({commit})=>{
+        //     try{
+        //           const question= await getquestions()
+        //           console.log('questioninstore:',question)
+        //           commit('setquestions',question)
+               
+        //     }catch(error){
+        //         console.log('couldnt fetch questions data in store')
+        //     }
+        // },
+         getquestions: async ( { commit }, q )=> {
+             console.log('getquestions in actions block',getquestions)
+             try{
+                const data= await getquestions( q )
+                console.log('getquestions in actions block',getquestions)
+                        
+                console.log('after:',data)
+                const { items } = data
+                // const ititle= (items)=>{
+                //     let i;
+                //     for (let i=0; i<items.length; i++) {
+                //         // Runs 5 times, with values of step 0 through
+                //         console.log('Walking east one step');
+                //         // console.log('after2:',title)
+                //         return i.title
+                //       }
+                //       return i.title
+                      
+                // }
+                
+                
+                console.log('after1:',data)
+              // console.log('after3:',ititle)
+
+               
+                commit( 'setquestions', items );
+
+                // return email;
+             }catch(error){
+                 console.log('error in getting module getquestions')
+             }
+           
+            
+        },
     }
 }
 

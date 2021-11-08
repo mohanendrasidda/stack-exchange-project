@@ -1,46 +1,5 @@
 <template>
   <div>
-    <!-- <div>
-      <form>
-        <input type="search" v-model="tagged" @change="searchingoption" />
-      </form>
-      <router-link
-        :to="`/questions/${item.question_id}`"
-        class="list-group text-reset text-decoration-none"
-        v-for="item in questionsdata.items"
-        :key="item.question_id"
-      >
-        <div>{{ item.question_id }}</div>
-        <ol class="list-group list-group-numbered">
-          <li
-            class="
-              list-group-item
-              d-flex
-              justify-content-betwe
-              align-items-start
-              my-3
-              bg-color
-            "
-          >
-            <div class="ms-2 me-auto">
-              <div class="fw-bold fs-1 text-danger">
-                <h3>{{ item.title }}</h3>
-              </div>
-              &nbsp;
-              <div v-html="item.body"></div>
-            </div>
-            <span class="badge bg-primary rounded-pill">{{
-              item.answer_count
-            }}</span>
-          </li>
-        </ol>
-      </router-link>
-    </div> -->
-    <!-- props to answers -->
-    <!-- <Answers
-    v-for="item in questionsdata.items"
-    :key="item.question_id"
-    :title="item.title"/> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
@@ -109,7 +68,7 @@
                       v-model="order"
                       @change="searchingoption"
                     >
-                      <option disable selected value="">Order By</option>                 
+                      <option disable selected value="">Order By</option>
                       <option value="1">asc</option>
                       <option value="2">desc</option>
                     </select>
@@ -135,21 +94,24 @@
                   <!-- <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
                                        {{item.answer_count}}
                                     </div> -->
-                  <div class="job-content" >
+                  <div class="job-content">
                     <!-- questions router link starts here -->
 
                     <router-link
-                      class=" question"
+                      class="question"
                       :to="`/questions/${item.question_id}`"
                     >
-                    <div> <label
-                      for="h3"><b>Q</b></label> <h3>{{ item.title }}</h3></div>
-                    
+                      <div>
+                        <label for="h3"><b>Q</b></label>
+                        <h3>{{ item.title }}</h3>
+                      </div>
                     </router-link>
 
-                    <div class="cart-answers "> 
-                      <div v-html="item.body" class="ans"></div> 
-                      <div class="answercount" title="No.of answers">Ans: {{item.answer_count}}</div>
+                    <div class="cart-answers">
+                      <div v-html="item.body" class="ans"></div>
+                      <div class="answercount" title="No.of answers">
+                        Ans: {{ item.answer_count }}
+                      </div>
                     </div>
                     <hr />
                   </div>
@@ -160,15 +122,17 @@
         </div>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import { getquestions } from "@/services/questions";
+// import {mapActions} from "mapActions"
 // import Answers from './answers.vue';
 export default {
   name: "questions",
-  components:{
+  components: {
     // Answers
   },
   data() {
@@ -190,48 +154,65 @@ export default {
         console.log(error);
       }
     },
-    
+    // async getquestions() {
      
+    // },
   },
   // computed:{
-  //   this.$store.commit('setquestions')
+  //   storequestion(){
+  //
+  //        this.$store.dispatch('questionsAsync')
+  //   }
+  // //  this.$store.dispatch('questionsAsync')
   // },
-  created() {
+  async created() {
     this.searchingoption();
+    //  try {
+    //     this.$store.dispatch('getquestions', this.q);
+    //     // .then( () => this.$router.push( { name: 'questions' } ) )
+    //   } catch (error) {
+    //     console.log("error in questions.vue store", error);
+    //   }
   },
+  async mounted (){
+     try {
+        this.$store.dispatch('getquestions', this.q);
+        // .then( () => this.$router.push( { name: 'questions' } ) )
+      } catch (error) {
+        console.log("error in questions.vue store", error);
+      }
+  }
 };
 </script>
 
 <style scoped>
-
-.body{
-  background-color: rgb(136,171,227);
+.body {
+  background-color: rgb(136, 171, 227);
   width: 100%;
 }
 
-.question{
+.question {
   color: rgb(143, 16, 16);
   overflow: auto;
 }
-.question:hover{
+.question:hover {
   color: navy;
 }
-.cart-answers{
-    display: flex;
-   /* background-color:rgb(240, 192, 90);*/
-   background-color:white;
+.cart-answers {
+  display: flex;
+  /* background-color:rgb(240, 192, 90);*/
+  background-color: white;
 
-    flex-wrap: wrap;
-    padding: 4em 0 0 2em;
-    margin-bottom: 1em;
-    border-radius: 1em;
-    /*color: rgb(255, 255, 255); */
-    color: rgb(46, 46, 4);
-    position: relative;
-    overflow: auto; 
-   
+  flex-wrap: wrap;
+  padding: 4em 0 0 2em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+  /*color: rgb(255, 255, 255); */
+  color: rgb(46, 46, 4);
+  position: relative;
+  overflow: auto;
 }
-.answercount{
+.answercount {
   position: absolute;
   left: 92%;
   top: 0.95%;
@@ -239,13 +220,12 @@ export default {
   color: rgb(105, 240, 93);
   border-radius: 80%;
   background-color: rgb(216, 22, 22);
-  
 }
 @media screen and (max-width: 300px) {
-        .cart-answers {
-            display: block;
-            float: none;
-        }
+  .cart-answers {
+    display: block;
+    float: none;
+  }
 }
 .continer {
   max-width: 1080px;
@@ -311,7 +291,7 @@ body {
 
 .career-form .select-container {
   position: relative;
-} 
+}
 
 .career-form .select-container:before {
   position: absolute;
@@ -323,33 +303,14 @@ body {
   font-family: "Material-Design-Iconic-Font";
 }
 
- .filter-result .job-box {
+.filter-result .job-box {
   -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
   box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
   border-radius: 10px;
   padding: 10px 35px;
-} 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- ul {
+ul {
   list-style: none;
 }
 
@@ -418,6 +379,6 @@ body {
 }
 .mb-30 {
   margin-bottom: 30px;
-} 
+}
 </style>
 
