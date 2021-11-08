@@ -6,12 +6,12 @@ import Router from 'vue-router'
 import Vuex from 'vuex'
 // import dateFilter from '@/filters/date'
 
-// import Appspinner from '@/components/utils/AppSpinner'
-// import AppAlert from '@/components/utils/AppAlert'
+import Appspinner from '@/components/utils/AppSpinner'
+import AppAlert from '@/components/utils/AppAlert'
 
 // Vue.filter('Date',dateFilter)
 Vue.use(Router)
-// Vue.component('AppSpinner',Appspinner)
-// Vue.component('AppAlert',AppAlert)
+ Vue.component('AppSpinner',Appspinner)
+ Vue.component('AppAlert',AppAlert)
 
 Vue.use(Vuex)

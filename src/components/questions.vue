@@ -1,5 +1,46 @@
 <template>
   <div>
+    <!-- <div>
+      <form>
+        <input type="search" v-model="tagged" @change="searchingoption" />
+      </form>
+      <router-link
+        :to="`/questions/${item.question_id}`"
+        class="list-group text-reset text-decoration-none"
+        v-for="item in questionsdata.items"
+        :key="item.question_id"
+      >
+        <div>{{ item.question_id }}</div>
+        <ol class="list-group list-group-numbered">
+          <li
+            class="
+              list-group-item
+              d-flex
+              justify-content-betwe
+              align-items-start
+              my-3
+              bg-color
+            "
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold fs-1 text-danger">
+                <h3>{{ item.title }}</h3>
+              </div>
+              &nbsp;
+              <div v-html="item.body"></div>
+            </div>
+            <span class="badge bg-primary rounded-pill">{{
+              item.answer_count
+            }}</span>
+          </li>
+        </ol>
+      </router-link>
+    </div> -->
+    <!-- props to answers -->
+    <!-- <Answers
+    v-for="item in questionsdata.items"
+    :key="item.question_id"
+    :title="item.title"/> -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
@@ -122,7 +163,6 @@
         </div>
       </div>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
