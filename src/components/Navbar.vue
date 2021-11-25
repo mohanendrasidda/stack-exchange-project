@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand navbar-light bg-light">
+  <nav class="navbar navbar-expand navbar-light bg-light" v-if="isAuthenticated">
     <div class="container">
       <ul class="nav navbar-nav mr-auto">
         <!-- <li class="nav-item">
@@ -8,7 +8,7 @@
           >
         </li> -->
         <li class="nav-item">
-          <router-link class="nav-link" active-class="active" to="/"
+          <router-link class="nav-link" active-class="active" to="/home"
             >Home</router-link
           >
         </li>
@@ -25,7 +25,7 @@
         <li class="nav-item">
           <span class="nav-link"> Hie {{ email }} </span>
         </li>
-        <li class="nav-item" v-if="isAuthenticated">
+        <li class="nav-item">
           <span class="nav-link cursor-pointer" @click="logout()">Logout</span>
         </li>
       </ul>
@@ -49,12 +49,13 @@ export default {
       return this.$store.getters.isAuthenticated;
     },
   },
-   methods: {
-        logout() {
-            this.$store.dispatch( 'logout' )
-                .then( () => this.$router.push( { name: 'login' } ) );
-        }
-    }
+  methods: {
+    logout() {
+      this.$store
+        .dispatch("logout")
+        .then(() => this.$router.push({ name: "login" }));
+    },
+  },
 };
 </script>
 

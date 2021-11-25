@@ -1,6 +1,6 @@
 <template>
-  <div class="body">
-    <div class="row" v-if="status === 'LOADING'">
+   <div class="body">
+   <!-- <div class="row" v-if="status === 'LOADING'">
       <div class="col-12">
         <app-alert theme="info">
           <template v-slot:heading>Working...</template>
@@ -10,8 +10,8 @@
         </app-alert>
         <app-spinner theme="dark" />
       </div>
-    </div>
-    <div class="row" v-else-if="status === 'ERROR'">
+    </div> -->
+    <div class="row" v-if="status === 'ERROR'">
       <div class="col-12">
         <app-alert theme="danger">
           <template v-slot:heading>Error!</template>
@@ -21,7 +21,7 @@
         </app-alert>
       </div>
     </div>
-    <template v-else>
+    <div v-else >
       <div class="heading">
         <h3>Results</h3>
         <!-- <span v-html="$store.getters.getitems "></span> -->
@@ -35,7 +35,7 @@
         <button :data-id="index" @click="storeanswers">Add to cart</button>
         <hr />
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -86,11 +86,13 @@ export default {
       try {
         const saveddata = this.answersdata.items[event.target.dataset.id];
         const data = await postanswers.postanswers(saveddata);
-        this.status = "LOADED";
-        console.log(data);
+        
+        console.log('answers data',data);
         // this.$router.push({
         //     name: 'cart'
         // });
+        this.status = "LOADED";
+        console.log(this.status)
       } catch (error) {
         this.error = error;
         this.status = "ERROR";

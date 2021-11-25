@@ -17,14 +17,18 @@ const router = new Router({
       component: signup
     },
     {
-      name: 'login',
-      path: '/login',
-      component: login
+      //name: 'login',
+      name: 'questions',
+      path: '/home',
+     // component: login
+     component: questions
     },
     {
-      name: 'questions',
+     // name: 'questions',
+     name: 'login',
       path: '/',
-      component: questions,
+      //component: questions,
+      component: login
     },
     {
         name: 'answers',

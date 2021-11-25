@@ -40,6 +40,9 @@ export default{
                console.log(removedataid)
                alert(`your answer is removed refresh to see the result`)
                const data= await deleteanswer.deleteanswer(removedataid)
+               const data1= await savedanswers.savedanswers()
+               this.finalsavedanswers= data1;
+               this.$router.push( { name: 'cart' } )
                //savedanswers.savedanswers()
               // console.log(this.finalsavedanswers)
                console.log(data)

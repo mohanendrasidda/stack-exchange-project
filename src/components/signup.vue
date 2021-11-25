@@ -37,7 +37,7 @@
             v-model="usercredentials.password"
           /> 
             <button @click="storeanswers" type="submit">signup</button>
-           <router-link to="/login"  tag="button"> login</router-link> 
+           <router-link to="/"  tag="button"> login</router-link> 
         </div>
 
         <div class="container" style="background-color: #f1f1f1">
